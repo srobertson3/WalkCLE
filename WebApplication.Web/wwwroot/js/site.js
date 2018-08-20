@@ -1,4 +1,6 @@
-﻿function getElementFromTemplate(id) {
+﻿
+
+function getElementFromTemplate(id) {
     let domNode = document.importNode(document.getElementById(id).content, true).firstElementChild;
 
     return domNode;
@@ -172,6 +174,8 @@ async function setMarkers(locations) {
         newLocationDiv.querySelector('label#location-number').innerText = `${i + 1}.`;
         newLocationDiv.querySelector('label#location-desc').innerText = ellipsify(locationArray[i].description);
         newLocationDiv.querySelector('a').setAttribute("href", `location/detail/${locationArray[i].id}`);
+        console.log(locationArray[i].distancefromuser);
+        newLocationDiv.querySelector('label#distance-from-user').innerText = locationArray[i].distanceFromUser;
 
         document.querySelector('div.location-name').insertAdjacentElement('beforeend', newLocationDiv);
 
@@ -227,8 +231,10 @@ async function addSearchResultsToPage(locations) {
         newLocationDiv.querySelector('label#location-name').innerText = locationArray[i].name;
         newLocationDiv.querySelector('label#location-number').innerText = `${i + 1}.`;
         newLocationDiv.querySelector('label#location-desc').innerText = ellipsify(locationArray[i].description);
-        newLocationDiv.querySelector('a').setAttribute("href", `location/detail/${locationArray[i].id}`);
-
+        newLocationDiv.querySelector('a').setAttribute("href", `location/detail/${locationArray[i].id}?latitude=${youAreHere.lat}&longitude=${youAreHere.lng}`);
+        console.log(locationArray[i].distancefromuser);
+        newLocationDiv.querySelector('label#distance-from-user').innerText = locationArray[i].distanceFromUser;
+        
         document.querySelector('div.location-name').insertAdjacentElement('beforeend', newLocationDiv);
 
         markers.push(marker);

@@ -39,33 +39,33 @@ namespace WebApplication.Web.Controllers
 			this.categoryDal = categoryDal;
         }
 
-        /// <summary>
-        /// Takes the users location and finds the N closest location nearest to to them within one mile
-        /// </summary>
-        /// <param name="latitude">The latitude of the user</param>
-        /// <param name="longitude">The longitude of the user</param>
-        /// <param name="numberOfLocations">The number of users that the user wants to see near them</param>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult NearbyNLocations(decimal latitude, decimal longitude, int numberOfLocations)
+		/// <summary>
+		/// Takes the users location and finds the N closest location nearest to to them within one mile
+		/// </summary>
+		/// <param name="latitude">The latitude of the user</param>
+		/// <param name="longitude">The longitude of the user</param>
+		/// <param name="numberOfLocations">The number of users that the user wants to see near them</param>
+		/// <returns></returns>
+		[HttpGet]
+		public JsonResult NearbyNLocations(decimal latitude, decimal longitude, int numberOfLocations)
+		{
+			IList<Location> locations = new List<Location>();
+
+			double maxDistance = 1;
+
+			locations = dal.GetNearbyNLocations(latitude, longitude, maxDistance, numberOfLocations);
+
+			return Json(locations);
+		}
+
+		/// <summary>
+		/// Shows the details for a selected location.
+		/// </summary>
+		/// <param name="location">The location to get the details for.</param>
+		/// <returns></returns>
+		public IActionResult Detail(int id, decimal latitude, decimal longitude)
         {
-            IList<Location> locations = new List<Location>();
-
-            double maxDistance = 1;
-
-            locations = dal.GetNearbyNLocations(latitude, longitude, maxDistance, numberOfLocations);
-
-            return Json(locations);
-        }
-
-        /// <summary>
-        /// Shows the details for a selected location.
-        /// </summary>
-        /// <param name="location">The location to get the details for.</param>
-        /// <returns></returns>
-        public IActionResult Detail(int id)
-        {
-			Location location = dal.GetLocationById(id);
+			Location location = dal.GetLocationById(id, latitude, longitude);
 
 			location.Categories = categoryDal.GetCategoriesForLocation(id);
 			

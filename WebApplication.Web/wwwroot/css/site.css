@@ -262,6 +262,12 @@ a.click-link:hover {
     color: #fff;
     text-shadow: 2px 2px 4px #cad4da;
 }
+#distance-from-location {
+    font-family: Montserrat;
+    font-weight: bold;
+    color: fff;
+    font-size: 1.1em;
+}
 
 
 /*Scrollbar styling*/

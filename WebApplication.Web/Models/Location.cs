@@ -77,6 +77,11 @@ namespace WebApplication.Web.Models
         /// </summary>
         public string Twitter { get; set; }
 
+		/// <summary>
+		/// A property that will hold distance from user's current position to the location upon a GetNearbyLocations() call in DAL.  Hopefully we can use this to gauge whether or not they are allowed to check-in.
+		/// </summary>
+		public double DistanceFromUser { get; set; }
+
         /// <summary>
         /// A list of categories that a location falls under.
         /// </summary>
