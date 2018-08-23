@@ -5,6 +5,10 @@
     padding-bottom: 250px;
 }
 
+container body-content {
+    width: auto;
+}
+
 #body2 {
     background-color: rgb(12, 12, 62);
 }

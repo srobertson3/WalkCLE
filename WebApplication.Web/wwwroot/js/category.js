@@ -221,6 +221,8 @@ const coordChoices = [
     { latitude: 41.4997236, longitude: -81.6958457 },
     { latitude: 41.498284, longitude: -81.705700 },
     { latitude: 41.509941, longitude: -81.610130 },
+    { latitude: 41.500709, longitude: -81.682071 },
+    { latitude: 41.504453, longitude: -81.641357 },
 ];
 
 
