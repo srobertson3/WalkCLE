@@ -447,8 +447,8 @@ VALUES (1, 23, GETDATE() - 1);
 --Test badges
 SET IDENTITY_INSERT badges ON;
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (1, 'Team Player', 'You root for the home team every time!', 'Earned by checking in at First Energy Stadium, Progressive Field, and Quicken Loans Arena.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (1, 'Team Player', 'You root for the home team every time!', 'Earned by checking in at First Energy Stadium, Progressive Field, and Quicken Loans Arena.', 'TeamPlayer');
 
 INSERT INTO badges (id, name, description, criteria, image)
 VALUES (2, 'Namaste', 'You''re all about inner peace.', 'Earned by checking in at Inner Bliss Yoga Studio.', 'Yoga');
@@ -465,20 +465,20 @@ VALUES (5, 'CLE-gram', 'Instagram that ASAP. You''re snapping amazing shots of C
 INSERT INTO badges (id, name, description, criteria, image)
 VALUES (6, 'Treehugger', 'Whether you''re more a Ron Swanson or a Leslie Knope, you love CLE parks.', 'Earned by checking in at Cleveland Metroparks Zoo, Edgewater Park, Public Square, and Voinovich Park.', 'TreeHugger');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (7, 'Barhopper', 'Your world looks better with beer goggles on.', 'Earned by checking in at 5 or more bars.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (7, 'Barhopper', 'Your world looks better with beer goggles on.', 'Earned by checking in at 5 or more bars.', 'Barhopper');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked ladies.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked ladies.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.', 'Patron');
 
 INSERT INTO badges (id, name, description, criteria)
 VALUES (9, 'Swimmin'' with the Fishes', 'No, you didn''t anger a mob boss, you just wanted to see sharks.', 'Earned by checking in at the Greater Cleveland Aquarium.');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (10, 'Fitness Fanatic', 'You''re into working out. The only thing you love more than working out is letting everyone know you work out.', 'Earned by checking in to Climb Cleveland, Great Lakes Watersports, and Inner Bliss Yoga Studio.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (10, 'Fitness Fanatic', 'You''re into working out. The only thing you love more than working out is letting everyone know you work out.', 'Earned by checking in to Climb Cleveland, Great Lakes Watersports, and Inner Bliss Yoga Studio.', 'FitnessFanatic');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (11, 'Elevated', 'You''re a fan of programming, parameters, ping pong, & party parrots.', 'Earned by checking in to Tech Elevator.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (11, 'Elevated', 'You''re a fan of programming, parameters, ping pong, & party parrots.', 'Earned by checking in to Tech Elevator.', 'Elevate');
 
 INSERT INTO badges (id, name, description, criteria)
 VALUES (12, 'Shopaholic', 'Now that you''ve visited all these cool places in Cleveland, don''t you want to have some proof?', 'Earned by checking in at The Arcade, CLE Clothing Co., Cleveland Flea, Tower City Center, and West Side Market.');
@@ -486,14 +486,14 @@ VALUES (12, 'Shopaholic', 'Now that you''ve visited all these cool places in Cle
 INSERT INTO badges (id, name, description, criteria)
 VALUES (13, 'Cleveland Rocks!', 'Set a couch on fire, throw a TV out a window, and demand a bowl of M&Ms with no Brown M&Ms. You''re a rockstar now!', 'Earned by checking in at the Rock & Roll Hall of Fame.');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (14, 'CLE Newbie', 'Welcome to the ''Land!', 'Earned by checking in at any location for the first time.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (14, 'CLE Newbie', 'Welcome to the ''Land!', 'Earned by checking in at any location for the first time.', 'Newbie', 'Generic');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (15, 'Defender of the ''Land', 'You must live here because you''ve checked in to ALL locations.  YOU ROCK!', 'Earned by checking in to all locations.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (15, 'Defender of the ''Land', 'You must live here because you''ve checked in to ALL locations.  YOU ROCK!', 'Earned by checking in to all locations.', 'Generic');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (16, 'Stuck in a Rut', 'Didn''t you know that variety is the spice of life?', 'Earned by checking into the same location more than 5 times.');
+INSERT INTO badges (id, name, description, criteria, image)
+VALUES (16, 'Stuck in a Rut', 'Didn''t you know that variety is the spice of life?', 'Earned by checking into the same location more than 5 times.', 'StuckInARut);
 
 SET IDENTITY_INSERT badges OFF;
 
