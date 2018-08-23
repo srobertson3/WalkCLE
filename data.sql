@@ -104,7 +104,7 @@ INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitu
 VALUES (34, 'Severance Hall', '11001 Euclid Ave', 'Cleveland', 'OH', '44106', 41.5063477, -81.6093361, 'severance', 'Regarded by many music-lovers as one of the world''s most beautiful concert halls, Severance Hall opened in 1931 as the home of The Cleveland Orchestra. The building is named for John L. Severance and his wife, Elisabeth, who initially pledged $1 million for its construction. Elisabeth died unexpectedly early in the design process, and John Severance made additional contributions toward the building in her memory. The building’s architectural significance has been recognized by local and national preservation societies, including the Cleveland Landmarks Commission and the National Register of Historic Places, and Severance Hall is a recipient of the Honor Award by the National Trust for Historic Preservation.');
 
 INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
-VALUES (35, 'Playhouse Square', '1501 Euclid Ave #200', 'Cleveland', 'OH', '44115', 41.5013048, -81.6807947, 'playhouse', 'As the country’s largest performing arts center outside of New York, the not-for-profit performing arts center utilizes the arts to engage individuals and attract more than one million guests per year to its 1,000+ annual events. These audiences act as the catalyst for economic growth and vitality within the region.');
+VALUES (35, 'Playhouse Square', '1501 Euclid Ave #200', 'Cleveland', 'OH', '44115', 41.5013048, -81.6807947, 'playhouse', 'As the country’s largest performing arts center outside of New York, the not-for-profit performing arts center utilizes the arts to engage individuals and attract more than one million guests per year to its 1,000+ annual events. These audiences act as the catalyst for economic growth and vitality within the region. The centerpiece of Playhouse Square is the world’s largest permanent crystal chandelier in the style of grand chandeliers seen in Playhouse Square lobbies. The chandelier itself is 20 feet in height and adorned with more than 4,200 crystals. Suspended from a 44-foot high steel structure, the chandelier graces the intersection of E. 14th Street and Euclid Avenue.');
 
 INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
 VALUES (36, 'State Theatre', '1519 Euclid Avenue', 'Cleveland', 'OH', '44115', 41.5013048, -81.6807947, 'statetheater', 'The KeyBank State Theatre is a theater located at 1519 Euclid Avenue in downtown Cleveland, Ohio. It is one of the theaters that make up Playhouse Square. It was designed by the noted theater architect Thomas W. Lamb and was built in 1921 by Marcus Loew to be the flagship of the Ohio branch of the Loew''s Theatres company.');
@@ -162,6 +162,15 @@ VALUES (53, 'Inner Bliss Yoga Studio', '1224 Huron Road E', 'Cleveland', 'OH', '
 
 INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
 VALUES (54, 'Tech Elevator', '7100 Euclid Ave #140', 'Cleveland', 'OH', '44103', 41.5037778, -81.6388786, 'tekids', 'Where all the mathmagic and squirrel cigar parties happen.');
+
+INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
+VALUES (55, 'Hope Memorial Bridge', '', 'Cleveland', 'OH', '44113', 41.4893486, -81.6935635, 'guardian', 'The Art Deco figures carved in the sandstone pylons on the Lorain-Carnegie Bridge have stood guard over east-west traffic since 1932. Their name comes from Wilbur Watson, the bridge’s engineer, who wrote that the eight figures were meant to “typify the spirit of progress in transportation.” Each guardian holds a different vehicle in his hand, representing the history of ground transport — from a stagecoach, covered wagon and hay rack to a 1930s-era automobile and four types of trucks.');
+
+INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
+VALUES (56, 'Free Stamp', '', 'Cleveland', 'OH', '44114', 41.5057327, -81.6923535, 'free', 'The Free Stamp is an outdoor sculpture located in Willard Park. Created by Claes Oldenburg and his wife Coosje van Bruggen, it has been called the "world''s largest rubber stamp". The dimensions of the sculpture are 28 ft 10 in (8.79 m) by 26 ft (7.9 m) by 49 ft (15 m). The sculpture depicts a rubber stamp with the word "FREE" in its stamping area. The work was commissioned by Standard Oil of Ohio (Sohio) in 1982 for display at its soon-to-be-constructed headquarters building on Public Square, which became the BP Tower. The piece was originally designed to stand upright, with the lettering of the stamp hidden from view on its "stamp pad". According to one of the executives working with Oldenburg, the message on the stamp was intended as a reference to the Civil War-era Soldiers'' and Sailors'' Monument, located across the street. In an interview with WKYC-TV at the sculpture''s 1991 dedication, Oldenburg said the stamp''s message, "Free," referred to the emancipation of American slaves during and after the Civil War.');
+
+INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
+VALUES (57, 'Fountain of Eternal Life', '120 Public Square', 'Cleveland', 'OH', '44113', 41.5016942, -81.6929502, 'fountain', 'The Fountain of Eternal Life, also known as the War Memorial Fountain and Peace Arising from the Flames of War, is a statue and fountain in downtown Cleveland, Ohio designed by Cleveland Institute of Art graduate Marshall Fredericks and dedicated on May 30, 1964. The sculpture, which honors Greater Clevelanders who served, died, or were declared missing in military service, is situated on Veterans'' Memorial Plaza (formerly Mall A) as part of the Cleveland Mall. This Figure expresses the main theme of the Memorial Fountain, namely, the spirit of mankind rising out of the encircling flames of war, pestilence, and the destructive elements of life, reaching and ascending to a new understanding of life. Man rising above death, reaching upward to his God and toward Peace.');
 
 SET IDENTITY_INSERT locations OFF;
 
@@ -355,6 +364,9 @@ INSERT INTO locations_categories (location_id, category)
 VALUES (35, 'artsculture');
 
 INSERT INTO locations_categories (location_id, category)
+VALUES (35, 'photoops');
+
+INSERT INTO locations_categories (location_id, category)
 VALUES (36, 'artsculture');
 
 INSERT INTO locations_categories (location_id, category)
@@ -426,6 +438,15 @@ VALUES (53, 'activities');
 INSERT INTO locations_categories (location_id, category)
 VALUES (54, 'historical');
 
+INSERT INTO locations_categories (location_id, category)
+VALUES (55, 'photoops');
+
+INSERT INTO locations_categories (location_id, category)
+VALUES (56, 'photoops');
+
+INSERT INTO locations_categories (location_id, category)
+VALUES (57, 'photoops');
+
 -- Test users
 SET IDENTITY_INSERT users ON;
 
@@ -469,7 +490,7 @@ INSERT INTO badges (id, name, description, criteria)
 VALUES (7, 'Barhopper', 'Your world looks better with beer goggles on.', 'Earned by checking in at 5 or more bars.');
 
 INSERT INTO badges (id, name, description, criteria)
-VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked ladies.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.');
+VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked people.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.');
 
 INSERT INTO badges (id, name, description, criteria)
 VALUES (9, 'Swimmin'' with the Fishes', 'No, you didn''t anger a mob boss, you just wanted to see sharks.', 'Earned by checking in at the Greater Cleveland Aquarium.');
