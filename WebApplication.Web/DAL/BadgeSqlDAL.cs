@@ -50,97 +50,105 @@ namespace WebApplication.Web.DAL
 		/// The method that determines if a user has earned a particular badge
 		/// </summary>
 		/// <param name="userId">The id of the user to check</param>
-		public void GiveUserBadges(int userId)
+        /// <returns>Bool if a badge has been earned.</returns>
+		public bool GiveUserBadges(int userId)
 		{
 			List<Location> locations = GetAllLocations();
 
+            bool wasBadgeEarned = false;
+
 			// The key represents a location, and the value is the number of times that a user has visited a location.
 			Dictionary<int, int> checkInCount = GetVisitCount(userId, locations);
-
-			if (TeamPlayer(checkInCount))
+            #region Badge Logic
+            if (TeamPlayer(checkInCount))
 			{
 				//AddBadgeToUser_Badges(int userId, int badgeId)
-				AddBadgeToUserBadges(userId, 1);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 1);
+            }
 
 			if (Namaste(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 2);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 2);
+            }
 
 			if (OhFudge(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 3);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 3);
+            }
 
 			if (SpookSeeker(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 4);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 4);
+            }
 
 			if (CLEGram(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 5);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 5);
+            }
 
 			if (Treehugger(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 6);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 6);
+            }
 
 			if (BarHopper(checkInCount, locations))
 			{
-				AddBadgeToUserBadges(userId, 7);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 7);
+            }
 
 			if (PatronOfTheArts(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 8);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 8);
+            }
 
 			if (SwimminWithFishes(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 9);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 9);
+            }
 
 			if (FitnessFanatic(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 10);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 10);
+            }
 
 			if (Elevated(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 11);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 11);
+            }
 
 			if (Shopaholic(checkInCount, locations))
 			{
-				AddBadgeToUserBadges(userId, 12);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 12);
+            }
 
 			if (ClevelandRocks(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 13);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 13);
+            }
 
 			if (CleNewbie(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 14);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 14);
+            }
 
 			if (DefenderOfTheLand(checkInCount))
 			{
-				AddBadgeToUserBadges(userId, 15);
-			}
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 15);
+            }
 
 			if (StuckInARut(checkInCount))
-			{
-				AddBadgeToUserBadges(userId, 16);
-			}
-		}
+			{	
+                wasBadgeEarned = AddBadgeToUserBadges(userId, 16);
+            }
 
-        private void AddBadgeToUserBadges(int userId, int badgeId)
+            return wasBadgeEarned;
+            #endregion
+        }
+
+        private bool AddBadgeToUserBadges(int userId, int badgeId)
 		{
+            bool wasBadgeAdded = false;
+
 			try
 			{
 				using (SqlConnection conn = new SqlConnection(connectionString))
@@ -157,7 +165,7 @@ namespace WebApplication.Web.DAL
 					if (reader.HasRows)
 					{
 						reader.Close();
-						return;
+						wasBadgeAdded= false;
 					}
 					else
 					{
@@ -168,6 +176,7 @@ namespace WebApplication.Web.DAL
 						cmd.Parameters.AddWithValue("@badgeId", badgeId);
 
 						cmd.ExecuteNonQuery();
+                        wasBadgeAdded = true;
 					}
 				}
 			}
@@ -175,6 +184,8 @@ namespace WebApplication.Web.DAL
 			{
 				throw ex;
 			}
+
+            return wasBadgeAdded;
 		}
 
         #region Badge Logic
