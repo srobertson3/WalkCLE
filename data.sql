@@ -161,7 +161,7 @@ INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitu
 VALUES (53, 'Inner Bliss Yoga Studio', '1224 Huron Road E', 'Cleveland', 'OH', '44115', 41.5001969, -81.6827381, 'bliss', 'As you walk into the blissful sanctuary of Inner Bliss Yoga Studio, you will feel a warmth hug you. Delight in the present as you find your breath and journey toward self-discovery through the practices of yoga. Our kind, welcoming teachers create an environment of acceptance, a vibe of joy and lots of fun! We encourage laughter and humility is celebrated!');
 
 INSERT INTO locations (id, name, streetAddy, city, state, zip, latitude, longitude, photo, description)
-VALUES (54, 'Tech Elevator', '7100 Euclid Ave #140', 'Cleveland', 'OH', '44103', 41.5037778, -81.6388786, 'tekids', 'Where all the mathmagic and squirrel cigar parties happen. Long live the party parrot.');
+VALUES (54, 'Tech Elevator', '7100 Euclid Ave #140', 'Cleveland', 'OH', '44103', 41.5037778, -81.6388786, 'tekids', 'Where all the mathmagic and squirrel cigar parties happen.');
 
 SET IDENTITY_INSERT locations OFF;
 
@@ -475,7 +475,7 @@ INSERT INTO badges (id, name, description, criteria)
 VALUES (10, 'Fitness Fanatic', 'You''re into working out. The only thing you love more than working out is letting everyone know you work out.', 'Earned by checking in to Climb Cleveland, Great Lakes Watersports, and Inner Bliss Yoga Studio.');
 
 INSERT INTO badges (id, name, description, criteria)
-VALUES (11, 'Elevated', 'Debugging is like being the detective in a crime movie where you''re also the murderer.', 'Earned by checking in to Tech Elevator.');
+VALUES (11, 'Elevated', 'You''re a fan of programming, parameters, ping pong, & party parrots.', 'Earned by checking in to Tech Elevator.');
 
 INSERT INTO badges (id, name, description, criteria)
 VALUES (12, 'Shopaholic', 'Now that you''ve visited all these cool places in Cleveland, don''t you want to have some proof?', 'Earned by checking in at The Arcade, CLE Clothing Co., Cleveland Flea, Tower City Center, and West Side Market.');
