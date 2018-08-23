@@ -27,7 +27,7 @@ namespace WebApplication.Web.DAL
 				{
 					conn.Open();
 
-					string sql = "SELECT * FROM badges;";
+					string sql = "SELECT * FROM badges ORDER BY ISNULL(badges.image, 1) DESC;";
 
 					SqlCommand cmd = new SqlCommand(sql, conn);
 					SqlDataReader reader = cmd.ExecuteReader();
