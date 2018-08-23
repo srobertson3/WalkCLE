@@ -13,16 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('button#search').addEventListener('click', (event) => {
-        event.preventDefault();
-        keywords = document.getElementById('search-terms').value;
+        //event.preventDefault();
+        const keywords = document.getElementById('search-terms').value;
+        const redirectUrl = '@Url.Action("home","index",)';
+         
+        window.location.href = redirectUrl;
+        
+        
 
-        locations = KeywordSearch(keywords);
-        console.log(locations);
-        //window.location.replace("https://localhost:44392/");
+        //locations = KeywordSearch(keywords);
+        //console.log(locations);
+        ////window.location.replace("https://localhost:44392/");
 
-        clearMarkers();
+        //clearMarkers();
 
-        addSearchResultsToPage();
+        //addSearchResultsToPage();
     });
 });
 
@@ -30,12 +35,6 @@ let directionsMap;
 let startingLocation;
 
 let destinationAddress = locationSerialized.address + ' ' + locationSerialized.city + ' ' + locationSerialized.state + ' ' + locationSerialized.zip;
-
-// override location
-// 41.4995784    -81.6870261
-
-// destination
-// 41.4974835    -81.6927965
 
 function getDirections(position) {
     startingLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
@@ -72,7 +71,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     });
 }
 function getLocation() {
-    indexOrDetail = document.querySelector('div.home-wrapper')
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getDirections);
     } else {
@@ -80,8 +78,10 @@ function getLocation() {
     }
 }
 
+let base = window.location.protocol + "//" + window.location.host;
+
 async function KeywordSearch(keywords) {
-    const url = `https://localhost:44392/search/keywordsearch?keywords=${keywords}`;
+    const url = `${base}/search/keywordsearch?keywords=${keywords}`;
     const settings = {
         method: 'GET'
     };
@@ -118,9 +118,10 @@ async function addSearchResultsToPage(locations) {
         newLocationDiv.querySelector('label#location-name').innerText = locationArray[i].name;
         newLocationDiv.querySelector('label#location-number').innerText = `${i + 1}.`;
         newLocationDiv.querySelector('label#location-desc').innerText = ellipsify(locationArray[i].description);
-        newLocationDiv.querySelector('a').setAttribute("href", `https://localhost:44392/location/detail/${locationArray[i].id}`);
+        newLocationDiv.querySelector('a').setAttribute("href", `${base}/location/detail/${locationArray[i].id}`);
 
-        if (locationArray[i].distanceFromUser <= 0.05) {
+        //changing max distance for demo purposes from 0.05 to
+        if (locationArray[i].distanceFromUser <= 0.25) {
             const button = newLocationDiv.querySelector('button#check-in-button');
             button.classList.remove('hidden');
             newLocationDiv.querySelector('input').setAttribute("value", `${locationArray[i].id}`);
