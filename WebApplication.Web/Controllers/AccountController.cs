@@ -192,7 +192,7 @@ namespace WebApplication.Web.Controllers
                 return Json(badges);
             }
 
-            badgeDal.GiveUserBadges(currentUser.Id);
+            //badgeDal.GiveUserBadges(currentUser.Id);
 
             badges = badgeDal.GetUserBadges(currentUser.Id);
 
