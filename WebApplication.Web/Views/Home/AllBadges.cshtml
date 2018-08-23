@@ -2,13 +2,20 @@
 @{
     ViewData["Title"] = "AllBadges";
 }
-<div class="all-badges">
-    <h2>All Available Badges</h2>
 
-    @foreach (var badge in Model)
-    {
-        <img src="~/images/@(badge.Image).svg" alt="Description Image" class="detail-image" />
-        <p>@badge.BadgeName</p>
-        <p>@badge.BadgeCriteria</p>
-    }
-</div>
+<body class="allbadges">
+    <div class="all-badges">
+        <h2>All Available Badges</h2>
+
+        @foreach (var badge in Model)
+        {
+            <div class="badge-container">
+                <img src="~/images/@(badge.Image).svg" alt="Description Image" class="img-badge" />
+                <div class="badge-name">@badge.BadgeName</div>
+                <div class="badge-crit">@badge.BadgeCriteria</div>
+            </div>
+            <hr />
+        }
+
+    </div>
+</body>
