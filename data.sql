@@ -460,6 +460,15 @@ SET IDENTITY_INSERT users OFF;
 
 -- Test check-ins
 INSERT INTO check_ins(user_id, location_id, date)
+VALUES (1, 1, GETDATE()-5);
+
+INSERT INTO check_ins(user_id, location_id, date)
+VALUES (1, 2, GETDATE()-4);
+
+INSERT INTO check_ins(user_id, location_id, date)
+VALUES (1, 25, GETDATE()-4);
+
+INSERT INTO check_ins(user_id, location_id, date)
 VALUES (1, 31, GETDATE());
 
 INSERT INTO check_ins(user_id, location_id, date)
@@ -489,11 +498,8 @@ VALUES (6, 'Treehugger', 'Whether you''re more a Ron Swanson or a Leslie Knope, 
 INSERT INTO badges (id, name, description, criteria, image)
 VALUES (7, 'Barhopper', 'Your world looks better with beer goggles on.', 'Earned by checking in at 5 or more bars.', 'Barhopper');
 
-INSERT INTO badges (id, name, description, criteria)
-VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked people.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.');
-
 INSERT INTO badges (id, name, description, criteria, image)
-VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked ladies.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.', 'Patron');
+VALUES (8, 'Patron of the Arts', 'Celebrate the finer things in life, like abstract expressionism, surrealism, and statues of naked people.', 'Earned by checking in to the Museum of Art, Museum of Natural History, Severance Hall, and Western Reserve Historical Society.', 'Patron');
 
 INSERT INTO badges (id, name, description, criteria)
 VALUES (9, 'Swimmin'' with the Fishes', 'No, you didn''t anger a mob boss, you just wanted to see sharks.', 'Earned by checking in at the Greater Cleveland Aquarium.');
@@ -511,19 +517,25 @@ INSERT INTO badges (id, name, description, criteria)
 VALUES (13, 'Cleveland Rocks!', 'Set a couch on fire, throw a TV out a window, and demand a bowl of M&Ms with no Brown M&Ms. You''re a rockstar now!', 'Earned by checking in at the Rock & Roll Hall of Fame.');
 
 INSERT INTO badges (id, name, description, criteria, image)
-VALUES (14, 'CLE Newbie', 'Welcome to the ''Land!', 'Earned by checking in at any location for the first time.', 'Newbie', 'Generic');
+VALUES (14, 'CLE Newbie', 'Welcome to the ''Land!', 'Earned by checking in at any location for the first time.', 'Newbie');
 
 INSERT INTO badges (id, name, description, criteria, image)
-VALUES (15, 'Defender of the ''Land', 'You must live here because you''ve checked in to ALL locations.  YOU ROCK!', 'Earned by checking in to all locations.', 'Generic');
+VALUES (15, 'Defender of the ''Land', 'You must live here because you''ve checked in to ALL locations. YOU ROCK!', 'Earned by checking in to all locations.', 'Generic');
 
 INSERT INTO badges (id, name, description, criteria, image)
-VALUES (16, 'Stuck in a Rut', 'Didn''t you know that variety is the spice of life?', 'Earned by checking into the same location more than 5 times.', 'StuckInARut);
+VALUES (16, 'Stuck in a Rut', 'Didn''t you know that variety is the spice of life?', 'Earned by checking into the same location more than 5 times.', 'StuckInARut');
 
 SET IDENTITY_INSERT badges OFF;
 
 -- Give test badge to our test user
 INSERT INTO user_badges (user_id, badge_id)
+VALUES (1, 14);
+
+INSERT INTO user_badges (user_id, badge_id)
 VALUES (1, 1);
+
+INSERT INTO user_badges (user_id, badge_id)
+VALUES (1, 3);
 
 COMMIT TRANSACTION;
 
