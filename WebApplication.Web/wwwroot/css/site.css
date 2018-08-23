@@ -138,6 +138,10 @@ a {
     display: none;
 }
 
+.allbadges .search-form {
+    display: none;
+}
+
 #view-badges {
     font-size: 15px;
     text-align: right;
@@ -581,23 +585,74 @@ li input#logout {
     margin: 0px;
 }
 
+.check-in-container {
+    display: grid;
+}
+
 .check-in {
     grid-area: check-in;
+}
+
+.checked-in-location {
+    grid-area: check-in-location;
+}
+
+.earned {
+    grid-area: earned;
 }
 
 .badges {
     grid-area: badges;
 }
 
+.profile-badge-container {
+    display: inline-grid;
+}
+
+.badge-image {
+    grid-area: badge-image;
+    height: 100px;
+    justify-self: left;
+}
+
+.desc-crit{
+    grid-area: desc-crit;
+}
+
+
+
 /*All Badges Styling*/
 .all-badges {
     background-color: rgba(255, 255, 255, .75);
 }
 
+.badge-container {
+    display: grid;
+}
+
 .all-badges hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-color: lightgray;
+}
+
+.img-badge {
+    /*box-shadow: 8px 8px 5px black;*/
+    height: 150px;
+    grid-area: img-badge;
+}
+
+.badge-name {
+    grid-area: badge-name;
+    font-size: 25px;
+    justify-self: left;
+    align-self: center;
+}
+
+.badge-crit {
+    grid-area: badge-crit;
+    align-self: center;
+    justify-self: left;
 }
 
 
@@ -635,6 +690,23 @@ li input#logout {
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
         grid-template-areas: 'check-in badges';
+    }
+
+    div.badge-container {
+        grid-template-columns: 200px 200px;
+        grid-gap: 10px;
+        grid-template-areas: 'img-badge badge-name badge-crit';
+    }
+
+    div.profile-badge-container {
+        grid-template-columns: 1fr 2fr;
+        /*grid-gap: 10px;*/
+        grid-template-areas: 'badge-image desc-crit';
+    }
+
+    div.check-in-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'check-in-location earned';
     }
 }
 

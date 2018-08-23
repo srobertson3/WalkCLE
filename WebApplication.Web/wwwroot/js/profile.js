@@ -83,10 +83,10 @@ function addBadgesToPage(badges) {
         const newBadgeDiv = getElementFromTemplate('badge');
 
         // Add all the information that is received from the badge API to an element
-        newBadgeDiv.querySelector('img.badge-image').setAttribute('src', badges[i].image);
-        newBadgeDiv.querySelector('h3.badge-name').innerText = badges[i].badgeName;
-        newBadgeDiv.querySelector('p.badge-description').innerText = badges[i].badgeDescription;
-        newBadgeDiv.querySelector('p.badge-criteria').innerText = badges[i].badgeCriteria;
+        newBadgeDiv.querySelector('img.badge-image').setAttribute('src', `/images/${badges[i].image}.svg`);
+        newBadgeDiv.querySelector('div.badge-name').innerText = badges[i].badgeName;
+        newBadgeDiv.querySelector('div.badge-description').innerText = badges[i].badgeDescription;
+        newBadgeDiv.querySelector('div.badge-criteria').innerText = badges[i].badgeCriteria;
 
         // Add the new badge to the page
         document.querySelector('div.badges').insertAdjacentElement('beforeend', newBadgeDiv);
