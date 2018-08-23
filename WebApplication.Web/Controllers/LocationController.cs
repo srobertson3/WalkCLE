@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using WebApplication.Web.DAL;
 using WebApplication.Web.Models;
 using WebApplication.Web.Providers.Auth;
@@ -21,12 +18,14 @@ namespace WebApplication.Web.Controllers
         /// </summary>
         private readonly ILocationDAL dal;
 
-		private readonly ICheckinSqlDAL checkinDal;
+        private readonly ICheckinSqlDAL checkinDal;
 
         /// <summary>
         /// The DAL used to get information from the location table
         /// </summary>
 		private readonly ICategorySqlDAL categoryDal;
+
+        private readonly IBadgeSqlDAL badgeDal;
 
         /// <summary>
         /// Constructor that adds all the dependencies
@@ -34,12 +33,13 @@ namespace WebApplication.Web.Controllers
         /// <param name="authProvider">Where the authentication asd authoriztion is housed</param>
         /// <param name="dal">The locaion data access layer</param>
         /// <param name="categoryDal">The class that is used to access the categories table.</param>
-        public LocationController(IAuthProvider authProvider, ILocationDAL dal, ICategorySqlDAL categoryDal, ICheckinSqlDAL checkinDal)
+        public LocationController(IAuthProvider authProvider, ILocationDAL dal, ICategorySqlDAL categoryDal, ICheckinSqlDAL checkinDal, IBadgeSqlDAL badgeDal)
         {
             this.authProvider = authProvider;
             this.dal = dal;
-			this.categoryDal = categoryDal;
-			this.checkinDal = checkinDal;
+            this.categoryDal = categoryDal;
+            this.checkinDal = checkinDal;
+            this.badgeDal = badgeDal;
         }
 
         /// <summary>
@@ -68,37 +68,42 @@ namespace WebApplication.Web.Controllers
         /// <returns></returns>
         public IActionResult Detail(int id, double distanceFromUser)
         {
-			Location location = dal.GetLocationById(id);
+            Location location = dal.GetLocationById(id);
 
-			location.Categories = categoryDal.GetCategoriesForLocation(id);
+            location.Categories = categoryDal.GetCategoriesForLocation(id);
 
-			location.DistanceFromUser = distanceFromUser;
+            location.DistanceFromUser = distanceFromUser;
 
-			return View(location);
+            return View(location);
         }
 
-		public IActionResult Checkin(int id)
-		{
-			User user = new User();
-			
-			// Returns the user if they are registered and logged in. If they are not, it returns null. 
-			user = authProvider.GetCurrentUser();
+        public IActionResult Checkin(int id)
+        {
+            User user = new User();
 
-			// If the user is not logged in, send them to the register page.
-			if (user != null)
-			{
-				if (checkinDal.SaveCheckIn(user.Id, id))
-				{
-					TempData["checkedin"] = true;
-					return RedirectToAction("Index", "Home");
-				}
-			}
-			else
-			{
-				return RedirectToAction("Login", "Account");
-			}
+            // Returns the user if they are registered and logged in. If they are not, it returns null. 
+            user = authProvider.GetCurrentUser();
 
-			return RedirectToAction("Index", "Home");
-		}
+            // If the user is not logged in, send them to the register page.
+            if (user != null)
+            {
+                if (checkinDal.SaveCheckIn(user.Id, id))
+                {
+                    if (badgeDal.GiveUserBadges(user.Id))
+                    {
+                        TempData["earnedBadge"] = true;
+                    }
+
+                    TempData["checkedin"] = true;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

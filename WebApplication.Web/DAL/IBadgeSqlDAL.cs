@@ -11,6 +11,6 @@ namespace WebApplication.Web.DAL
         IList<Badge> GetUserBadges(int userId);
 		IList<Badge> GetAllBadges();
 
-        void GiveUserBadges(int userId);
+        bool GiveUserBadges(int userId);
     }
 }

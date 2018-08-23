@@ -6,11 +6,15 @@
 {
     <p><i id="check" class="fas fa-check-circle"></i> You've checked in!</p>
 }
+@if(TempData["earnedBadge"] != null)
+{
+    <p><i id="check" class="fas fa-check-circle"></i>You've earned a badge!</p>
+}
 
 <div class="home-wrapper">
     <div class="nearby-map">
         Number of locations to show:
-        <form name="radio-buttons">
+        <form name="radio-buttons">s
             <label class="checkbox-container">
                 &nbsp;&nbsp;&nbsp;5
                 <input type="radio" checked name="radio" value="5" onclick="getNearbyLocations(youAreHere, 5)" />
