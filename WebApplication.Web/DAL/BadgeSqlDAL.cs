@@ -367,7 +367,13 @@ namespace WebApplication.Web.DAL
 
 		private bool CleNewbie(Dictionary<int, int> checkInCount)
 		{
-			if (checkInCount.Count == 0)
+			int counter = 0;
+
+			foreach (var location in checkInCount)
+			{
+				counter += location.Value;
+			}
+			if (counter == 1)
 			{
 				return true;
 			}
