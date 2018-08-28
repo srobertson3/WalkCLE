@@ -265,18 +265,18 @@ const coordChoices = [
 ];
 
 
-// We override the getCurrentPosition function
-// and assign it our own function to run
-navigator.geolocation.getCurrentPosition = (success) => {
+//// We override the getCurrentPosition function
+//// and assign it our own function to run
+//navigator.geolocation.getCurrentPosition = (success) => {
 
-    // Get a random index from the location of coordinates
-    const rndIdx = Math.floor(Math.random() * coordChoices.length);
+//    // Get a random index from the location of coordinates
+//    const rndIdx = Math.floor(Math.random() * coordChoices.length);
 
-    // Get the position associated with that randomIndex
-    const position = {
-        coords: coordChoices[rndIdx]
-    };
+//    // Get the position associated with that randomIndex
+//    const position = {
+//        coords: coordChoices[rndIdx]
+//    };
 
-    // Call the function passed to indicate "we're done"
-    success(position);
-}
+//    // Call the function passed to indicate "we're done"
+//    success(position);
+//}
